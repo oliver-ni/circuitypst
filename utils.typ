@@ -1,5 +1,5 @@
-#import "../typst-canvas/vector.typ"
-#import "../typst-canvas/draw.typ": anchor
+#import "typst-canvas/vector.typ"
+#import "typst-canvas/draw.typ": anchor
 
 #let vector-dist(v1, v2) = {
   return calc.abs(
@@ -18,7 +18,7 @@
   let (x,y,z) = vector.sub(v2, v1)
 
   return calc.atan2(x,-y)
-  
+
   // return -panic(if v2.at(1) < v1.at(1) {-1} else {1} * vector.angle(vector.sub(v2, v1), (0,0,0), (1,0,0)))
   // return -if v2.at(1) < v1.at(1) {-1} else {1} * vector.angle(vector.sub(v2, v1), (0,0,0), (1,0,0))
 }
@@ -48,7 +48,7 @@
 
 // #let reverse-transform(v) = {
 //   (
-//     (start, center, v) => 
+//     (start, center, v) =>
 //   )
 // }
 

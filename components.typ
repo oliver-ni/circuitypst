@@ -1,4 +1,4 @@
-#import "../typst-canvas/draw.typ": *
+#import "typst-canvas/draw.typ": *
 
 #import "parts.typ"
 #import "utils.typ": anchors

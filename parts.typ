@@ -1,4 +1,4 @@
-#import "../typst-canvas/draw.typ": *
+#import "typst-canvas/draw.typ": *
 #import "utils.typ": anchors
 #let and-gate-body = {
   merge-path(close: true, {

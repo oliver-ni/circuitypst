@@ -15,12 +15,12 @@
 
 /// Resistive bipoles
 
-/// Short circuit 
+/// Short circuit
 /// type: path-style
 /// nodename: shortshape
 /// class: default
 #let short = {
-  line((-0.5, 0), (0.5, 0))
+  line((-0.5cm - 0.5pt, 0), (0.5cm + 0.5pt, 0))
   anchors((
     north: (0,0),
     south: (0,0),
@@ -51,7 +51,7 @@
   anchors((
     north: (0, height/2),
     south: (0, -height/2),
-    label: (0, height),
+    label: (0, 0),
     annotation: "south"
   ))
 }
@@ -101,10 +101,26 @@
 
 /// Terminal shapes
 
-/// Unconnected terminal
-/// type: node
-#let ocirc = {
-  circle((0, 0), radius: 0.05, stroke: black)
+#let ground = {
+  let top = 0.3;
+  let hstep = 0.1;
+  let vstep = 0.1;
+
+  for i in range(0, 3) {
+    let h = top - i * hstep;
+    line((-h, -vstep * i), (h, -vstep * i), stroke: black)
+  }
+
+  anchors((
+    north: (0, 0),
+    south: (0, -vstep * 3),
+    east: (0, 0),
+    west: (0, 0),
+  ))
+}
+
+#let _circ = {
+  circle((0, 0), radius: 0.05)
   anchors((
     north: (0, 0.05),
     south: (0, -0.05),
@@ -113,11 +129,18 @@
   ))
 }
 
+/// Unconnected terminal
+/// type: node
+#let ocirc = {
+  fill(white)
+  _circ
+}
+
 /// Connected terminal
-/// type: node 
+/// type: node
 #let circ = {
-    fill(black)
-    ocirc
+  fill(black)
+  _circ
 }
 
 /// Diamond-square terminal
@@ -166,7 +189,7 @@
     close: true
   )
 
-  
+
 
   anchors((
     north: (0, 1),
@@ -245,6 +268,9 @@
   "ocirc": ocirc,
   "diamondpole": diamondpole,
   "squarepole": squarepole,
+
+  // Ground
+  "ground": ground,
 
   // Amplifiers
   "op amp": op-amp,

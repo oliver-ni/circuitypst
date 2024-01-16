@@ -48,11 +48,11 @@
 }
 
 #let to(
-  component, 
-  start, 
-  end, 
-  label: none, 
-  name: none, 
+  component,
+  start,
+  end,
+  label: none,
+  name: none,
   i: none,
   v: none,
   poles: none,
@@ -69,7 +69,7 @@
     }
     anchor("start", start)
     anchor("end", end)
-    
+
 
     // This transformation moves (0,0) to the mid point of the line and rotates such that the line from -> to lies flat on the x axis
     rotate((
@@ -83,8 +83,8 @@
 
     anchor("center", (0,0))
 
-    line("start", (-0.5, 0))
-    line("end", (0.5, 0))
+    line("start", (-0.5cm + 0.5pt, 0))
+    line("end", (0.5cm - 0.5pt, 0))
     components.path.at(component)
     utils.anchors((
       west: (-0.5, 0),
